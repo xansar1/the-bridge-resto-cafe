@@ -9,9 +9,18 @@ import {
   Images,
   MapPin,
   ArrowUpRight,
+  ArrowDown,
+  Search,
+  ChevronLeft,
+  ChevronRight,
   Sparkles,
   Menu,
   X,
+  Heart,
+  Users,
+  CalendarDays,
+  Expand,
+  Star,
 } from "lucide-react";
 
 const navItems = [
@@ -379,6 +388,8 @@ const galleryItems = [
 
 const photo = (filename: string) => `/images/cafe/${filename}`;
 
+const foodGalleryItems = foodItems.filter((food) => food.image);
+
 export default function Home() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [selectedFood, setSelectedFood] =
@@ -440,7 +451,7 @@ export default function Home() {
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [activeGallery, activeFoodGallery]);
+  }, [activeGallery, activeFoodGallery, foodGalleryItems.length]);
 
   useEffect(() => {
     const updateNavbar = () => {
@@ -454,7 +465,7 @@ export default function Home() {
     updateNavbar();
     window.addEventListener("scroll", updateNavbar, { passive: true });
 
-    const sectionIds = ["home", "discover", "menu", "space", "experience", "visit"];
+    const sectionIds = ["home", "discover", "menu", "space", "events", "experience", "visit"];
     const sections = sectionIds
       .map((id) => document.getElementById(id))
       .filter((section): section is HTMLElement => section !== null);
@@ -512,7 +523,7 @@ export default function Home() {
     ...Array.from(new Set(foodItems.map((food) => food.category))),
   ];
 
-  const foodGalleryItems = foodItems.filter((food) => food.image);
+  
 
   const filteredFoodItems = foodItems.filter((food) => {
     const matchesCategory =
@@ -537,7 +548,9 @@ export default function Home() {
     <main>
       {isPreloading && (
         <div className="site-preloader" role="status" aria-label="Loading The Bridge">
-          <div className="preloader-mark">✳</div>
+          <div className="preloader-mark">
+            <Sparkles size={30} strokeWidth={1.4} />
+          </div>
           <div className="preloader-brand">THE BRIDGE.</div>
           <div className="preloader-subtitle">RESTO CAFE · MAYANNUR</div>
           <div className="preloader-line">
@@ -548,7 +561,9 @@ export default function Home() {
 
       <nav className={`navbar ${isNavbarCompact ? "navbar-compact" : ""}`}>
         <a href="#home" className="brand">
-          <span className="brand-symbol">✳</span>
+          <span className="brand-symbol">
+            <Sparkles size={29} strokeWidth={1.4} />
+          </span>
           <span>
             THE BRIDGE.
             <small>RESTO CAFE · MAYANNUR</small>
@@ -567,7 +582,9 @@ export default function Home() {
           ))}
         </div>
 
-        <a href="#visit" className="nav-cta">Visit The Cafe ↗</a>
+        <a href="#visit" className="nav-cta">
+          Visit The Cafe <ArrowUpRight size={15} aria-hidden="true" />
+        </a>
 
         <button
           className="mobile-menu-button"
@@ -575,7 +592,7 @@ export default function Home() {
           aria-label="Toggle navigation"
           aria-expanded={menuOpen}
         >
-          {menuOpen ? "✕" : "☰"}
+          {menuOpen ? <X size={23} /> : <Menu size={23} />}
         </button>
 
         {menuOpen && (
@@ -587,7 +604,7 @@ export default function Home() {
                 onClick={() => setMenuOpen(false)}
                 className={activeSection === item.href.slice(1) ? "active" : ""}
               >
-                {item.label} ↗
+                {item.label} <ArrowUpRight size={15} />
               </a>
             ))}
           </div>
@@ -634,7 +651,7 @@ export default function Home() {
         </div>
         <a className="hero-scroll-cue" href="#discover" aria-label="Scroll to discover">
           <span>SCROLL TO DISCOVER</span>
-          <b>↓</b>
+          <b><ArrowDown size={16} aria-hidden="true" /></b>
         </a>
       </section>
 
@@ -674,7 +691,7 @@ export default function Home() {
           </p>
 
           <a href="#space" className="text-link">
-            Explore The Atmosphere ↗
+            Explore The Atmosphere <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </div>
       </section>
@@ -708,7 +725,7 @@ export default function Home() {
       </div>
 
   <div className="menu-search">
-    <span>⌕</span>
+    <Search size={17} aria-hidden="true" />
     <input
       type="search"
       placeholder="Find your favourite..."
@@ -732,7 +749,9 @@ export default function Home() {
                 {food.description && <small>{food.description}</small>}
               </span>
               <span className="menu-price-value">₹{food.price}/-</span>
-              <span className="menu-item-arrow" aria-hidden="true">↗</span>
+              <span className="menu-item-arrow" aria-hidden="true">
+                <ArrowUpRight size={16} />
+              </span>
             </button>
           ))}
         </div>
@@ -805,7 +824,7 @@ export default function Home() {
           </div>
 
           <a href="#visit" className="text-link">
-            Discover The Experience ↗
+            Discover The Experience <ArrowUpRight size={16} aria-hidden="true" />
           </a>
         </div>
       </section>
@@ -820,7 +839,9 @@ export default function Home() {
               Moments Worth <em>Staying For.</em>
             </h2>
           </div>
-          <span className="section-note">EXPLORE THE SPACE ↗</span>
+          <span className="section-note">
+            EXPLORE THE SPACE <ArrowUpRight size={14} aria-hidden="true" />
+          </span>
         </div>
 
         <div className="cinematic-gallery">
@@ -846,7 +867,9 @@ export default function Home() {
                 <p>{item.description}</p>
               </div>
 
-              <span className="gallery-expand" aria-hidden="true">↗</span>
+              <span className="gallery-expand" aria-hidden="true">
+                <Expand size={17} />
+              </span>
             </button>
           ))}
         </div>
@@ -889,7 +912,7 @@ export default function Home() {
 
           <article className="event-card">
             <div className="event-number">01</div>
-            <div className="event-icon">✳</div>
+            <div className="event-icon"><CalendarDays size={25} strokeWidth={1.5} /></div>
 
             <span>CELEBRATE TOGETHER</span>
 
@@ -901,13 +924,13 @@ export default function Home() {
             </p>
 
             <a href="#event-enquiry">
-              PLAN A CELEBRATION ↗
+              PLAN A CELEBRATION <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </article>
 
           <article className="event-card">
             <div className="event-number">02</div>
-            <div className="event-icon">♡</div>
+            <div className="event-icon"><Heart size={25} strokeWidth={1.5} /></div>
 
             <span>BEGIN SOMETHING BEAUTIFUL</span>
 
@@ -919,13 +942,13 @@ export default function Home() {
             </p>
 
             <a href="#event-enquiry">
-              PLAN YOUR EVENT ↗
+              PLAN YOUR EVENT <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </article>
 
           <article className="event-card">
             <div className="event-number">03</div>
-            <div className="event-icon">♧</div>
+            <div className="event-icon"><Users size={25} strokeWidth={1.5} /></div>
 
             <span>TIME WITH YOUR PEOPLE</span>
 
@@ -937,13 +960,13 @@ export default function Home() {
             </p>
 
             <a href="#event-enquiry">
-              ENQUIRE NOW ↗
+              ENQUIRE NOW <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </article>
 
           <article className="event-card">
             <div className="event-number">04</div>
-            <div className="event-icon">✧</div>
+            <div className="event-icon"><Sparkles size={25} strokeWidth={1.5} /></div>
 
             <span>YOUR MOMENT, YOUR WAY</span>
 
@@ -955,7 +978,7 @@ export default function Home() {
             </p>
 
             <a href="#event-enquiry">
-              DISCUSS YOUR EVENT ↗
+              DISCUSS YOUR EVENT <ArrowUpRight size={15} aria-hidden="true" />
             </a>
           </article>
 
@@ -986,7 +1009,7 @@ export default function Home() {
             rel="noreferrer"
             className="button button-light"
           >
-            ENQUIRE ON WHATSAPP ↗
+            ENQUIRE ON WHATSAPP <ArrowUpRight size={15} aria-hidden="true" />
           </a>
 
         </div>
@@ -1008,7 +1031,7 @@ export default function Home() {
           <em>It&apos;s Time Well Spent.</em>
         </h2>
         <a href="#visit" className="button button-light">
-          Find Your Way Here ↗
+          Find Your Way Here <ArrowUpRight size={15} aria-hidden="true" />
         </a>
       </section>
 
@@ -1022,7 +1045,9 @@ export default function Home() {
 
         <div className="review-grid">
           <article>
-            <span>✳ CUSTOMER HIGHLIGHT</span>
+            <span className="customer-highlight-label">
+              <Star size={13} aria-hidden="true" /> CUSTOMER HIGHLIGHT
+            </span>
             <h3>The Atmosphere</h3>
             <p>
               The greenery, relaxed surroundings and
@@ -1032,7 +1057,9 @@ export default function Home() {
           </article>
 
           <article>
-            <span>✳ CUSTOMER HIGHLIGHT</span>
+            <span className="customer-highlight-label">
+              <Star size={13} aria-hidden="true" /> CUSTOMER HIGHLIGHT
+            </span>
             <h3>The Food</h3>
             <p>
               Momos, pasta, salads, burgers and café
@@ -1042,7 +1069,9 @@ export default function Home() {
           </article>
 
           <article>
-            <span>✳ CUSTOMER HIGHLIGHT</span>
+            <span className="customer-highlight-label">
+              <Star size={13} aria-hidden="true" /> CUSTOMER HIGHLIGHT
+            </span>
             <h3>The Experience</h3>
             <p>
               A casual place for friends and families
@@ -1082,7 +1111,7 @@ export default function Home() {
               target="_blank"
               rel="noreferrer"
             >
-              Get Directions ↗
+              Get Directions <ArrowUpRight size={15} aria-hidden="true" />
             </a>
 
             <a
@@ -1132,7 +1161,7 @@ export default function Home() {
             onClick={() => setActiveGallery(null)}
             aria-label="Close gallery"
           >
-            ×
+            <X size={23} aria-hidden="true" />
           </button>
 
           <button
@@ -1146,7 +1175,7 @@ export default function Home() {
               );
             }}
           >
-            ‹
+            <ChevronLeft size={27} aria-hidden="true" />
           </button>
 
           <div
@@ -1176,7 +1205,7 @@ export default function Home() {
               setActiveGallery((activeGallery + 1) % galleryItems.length);
             }}
           >
-            ›
+            <ChevronRight size={27} aria-hidden="true" />
           </button>
         </div>
       )}
@@ -1197,7 +1226,7 @@ export default function Home() {
             onClick={() => setActiveFoodGallery(null)}
             aria-label="Close food gallery"
           >
-            ×
+            <X size={23} aria-hidden="true" />
           </button>
 
           <button
@@ -1211,7 +1240,7 @@ export default function Home() {
               );
             }}
           >
-            ‹
+            <ChevronLeft size={27} aria-hidden="true" />
           </button>
 
           <div
@@ -1240,7 +1269,7 @@ export default function Home() {
               setActiveFoodGallery((activeFoodGallery + 1) % foodGalleryItems.length);
             }}
           >
-            ›
+            <ChevronRight size={27} aria-hidden="true" />
           </button>
         </div>
       )}
@@ -1264,7 +1293,7 @@ export default function Home() {
               onClick={() => setSelectedFood(null)}
               aria-label="Close food details"
             >
-              ×
+              <X size={21} aria-hidden="true" />
             </button>
 
             <div className="food-modal-image">
@@ -1336,7 +1365,9 @@ export default function Home() {
 
       <footer className="footer">
         <a href="#home" className="brand">
-          <span className="brand-symbol">✳</span>
+          <span className="brand-symbol">
+            <Sparkles size={29} strokeWidth={1.4} />
+          </span>
           <span>
             THE BRIDGE.
             <small>RESTO CAFE · MAYANNUR</small>

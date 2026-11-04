@@ -3173,3 +3173,117 @@ em {
 .hero-actions .button svg {
   flex-shrink: 0;
 }
+
+/* CONSISTENT LUCIDE ICONS — THE BRIDGE */
+.brand-symbol,
+.preloader-mark,
+.nav-cta,
+.mobile-menu-button,
+.mobile-menu a,
+.text-link,
+.section-note,
+.menu-search,
+.menu-item-arrow,
+.gallery-expand,
+.event-icon,
+.event-card a,
+.event-enquiry .button,
+.customer-highlight-label,
+.gallery-close,
+.gallery-arrow,
+.hero-scroll-cue b {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.brand-symbol,
+.preloader-mark,
+.event-icon,
+.customer-highlight-label {
+  color: var(--gold);
+}
+
+.brand-symbol svg,
+.preloader-mark svg,
+.nav-cta svg,
+.mobile-menu-button svg,
+.mobile-menu a svg,
+.text-link svg,
+.section-note svg,
+.menu-search svg,
+.menu-item-arrow svg,
+.gallery-expand svg,
+.event-icon svg,
+.event-card a svg,
+.event-enquiry .button svg,
+.customer-highlight-label svg,
+.gallery-close svg,
+.gallery-arrow svg,
+.hero-scroll-cue svg {
+  flex-shrink: 0;
+}
+
+.mobile-menu-button {
+  align-items: center;
+  justify-content: center;
+}
+
+.event-icon {
+  display: grid;
+}
+
+.event-card a {
+  display: inline-flex;
+}
+
+.text-link {
+  display: inline-flex;
+}
+
+.section-note {
+  display: inline-flex;
+}
+
+.menu-search {
+  display: flex;
+}
+
+.menu-item-arrow {
+  display: inline-flex;
+}
+
+.gallery-expand {
+  display: inline-flex;
+}
+
+.customer-highlight-label {
+  display: inline-flex;
+}
+
+.gallery-close,
+.gallery-arrow {
+  line-height: 1;
+}
+
+@media (max-width: 600px) {
+  .brand-symbol svg {
+    width: 25px;
+    height: 25px;
+  }
+
+  .mobile-menu-button {
+    min-width: 42px;
+    min-height: 42px;
+    padding: 8px;
+  }
+
+  .mobile-menu a {
+    justify-content: space-between;
+  }
+
+  .hero-actions .button {
+    gap: 7px;
+  }
+}
