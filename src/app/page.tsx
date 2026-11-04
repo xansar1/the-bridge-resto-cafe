@@ -2,6 +2,17 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import {
+  House,
+  Compass,
+  Utensils,
+  Images,
+  MapPin,
+  ArrowUpRight,
+  Sparkles,
+  Menu,
+  X,
+} from "lucide-react";
 
 const navItems = [
   { label: "Discover", href: "#discover" },
@@ -606,10 +617,11 @@ export default function Home() {
 
           <div className="hero-actions">
             <a href="#menu" className="button button-light">
-              Explore The Menu ↗
+              Explore The Menu <ArrowUpRight size={17} />
             </a>
+
             <a href="#space" className="button button-outline">
-              Explore Our Space ↗
+              Explore Our Space <ArrowUpRight size={17} />
             </a>
           </div>
         </div>
@@ -1296,25 +1308,28 @@ export default function Home() {
       )}
 
       {/* MOBILE BOTTOM NAVIGATION */}
-
       <nav className="mobile-bottom-nav" aria-label="Quick navigation">
         {[
-          { label: "Home", href: "#home", icon: "⌂" },
-          { label: "Discover", href: "#discover", icon: "✳" },
-          { label: "Menu", href: "#menu", icon: "☷" },
-          { label: "Gallery", href: "#space", icon: "▧" },
-          { label: "Visit", href: "#visit", icon: "⌖" },
-        ].map((item) => (
-          <a
-            key={item.label}
-            href={item.href}
-            className={activeSection === item.href.slice(1) ? "active" : ""}
-            onClick={() => setMenuOpen(false)}
-          >
-            <span aria-hidden="true">{item.icon}</span>
-            <small>{item.label}</small>
-          </a>
-        ))}
+          { label: "Home", href: "#home", icon: House },
+          { label: "Discover", href: "#discover", icon: Compass },
+          { label: "Menu", href: "#menu", icon: Utensils },
+          { label: "Gallery", href: "#space", icon: Images },
+          { label: "Visit", href: "#visit", icon: MapPin },
+        ].map((item) => {
+          const Icon = item.icon;
+
+          return (
+            <a
+              key={item.label}
+              href={item.href}
+              className={activeSection === item.href.slice(1) ? "active" : ""}
+              onClick={() => setMenuOpen(false)}
+            >
+              <Icon size={21} strokeWidth={1.6} aria-hidden="true" />
+              <small>{item.label}</small>
+            </a>
+          );
+        })}
       </nav>
 
       {/* FOOTER */}

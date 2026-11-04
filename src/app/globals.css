@@ -3150,3 +3150,26 @@ em {
     transition: none;
   }
 }
+
+/* LUCIDE ICON ALIGNMENT */
+
+.mobile-bottom-nav a > svg {
+  display: block;
+  flex-shrink: 0;
+  transition: transform 0.25s ease;
+}
+
+.mobile-bottom-nav a.active > svg {
+  filter: drop-shadow(0 0 7px rgba(213, 168, 95, 0.35));
+}
+
+.hero-actions .button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.hero-actions .button svg {
+  flex-shrink: 0;
+}
