@@ -2124,10 +2124,12 @@ em {
   }
 
   .navbar > .nav-links,
-  .navbar > .nav-cta,
-  .navbar .mobile-menu-button,
-  .navbar .mobile-menu {
+  .navbar > .nav-cta {
     display: none !important;
+  }
+
+  .navbar .mobile-menu-button {
+    display: inline-flex !important;
   }
 
   .hero {
@@ -2445,7 +2447,7 @@ em {
 }
 
 
-/* REAL PHOTO UPDATE — graceful state when no matching dish photo was supplied */
+/* REAL PHOTO UPDATE â€” graceful state when no matching dish photo was supplied */
 .food-image-unavailable {
   display: flex;
   align-items: center;
@@ -2473,8 +2475,8 @@ em {
 }
 
 /* =========================================================
-   THE BRIDGE — REAL PHOTO RESPONSIVE HERO
-   Uses the café's own exterior photo, not a generated mockup.
+   THE BRIDGE â€” REAL PHOTO RESPONSIVE HERO
+   Uses the cafÃ©'s own exterior photo, not a generated mockup.
    ========================================================= */
 
 .hero {
@@ -2770,7 +2772,7 @@ em {
   }
 }
 
-/* DIGITAL MENU — MENU ITEMS & DISPLAY PRICES */
+/* DIGITAL MENU â€” MENU ITEMS & DISPLAY PRICES */
 
 .menu-price-grid {
   display: grid;
@@ -3174,7 +3176,7 @@ em {
   flex-shrink: 0;
 }
 
-/* CONSISTENT LUCIDE ICONS — THE BRIDGE */
+/* CONSISTENT LUCIDE ICONS â€” THE BRIDGE */
 .brand-symbol,
 .preloader-mark,
 .nav-cta,
@@ -3285,5 +3287,218 @@ em {
 
   .hero-actions .button {
     gap: 7px;
+  }
+}
+
+/* =========================================================
+   THE BRIDGE â€” SUBTLE BOTANICAL ATMOSPHERE
+   CSS-only effects: no animation library, canvas or video.
+   ========================================================= */
+
+/* A quiet botanical grain / leaf-shadow treatment on dark sections. */
+.intro.section,
+.menu-section,
+.signature-section,
+.space-section,
+.events-section,
+.reviews-section,
+.visit-section {
+  background-image:
+    radial-gradient(
+      ellipse at 12% 18%,
+      rgba(129, 151, 121, 0.075) 0%,
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 88% 78%,
+      rgba(213, 168, 95, 0.035) 0%,
+      transparent 38%
+    ),
+    repeating-linear-gradient(
+      118deg,
+      rgba(233, 225, 209, 0.008) 0,
+      rgba(233, 225, 209, 0.008) 1px,
+      transparent 1px,
+      transparent 5px
+    );
+  background-size: 150% 150%, 150% 150%, auto;
+  position: relative;
+  isolation: isolate;
+}
+
+.intro.section::before,
+.menu-section::before,
+.signature-section::before,
+.space-section::before,
+.events-section::before,
+.reviews-section::before,
+.visit-section::before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  inset: -12% -5%;
+  pointer-events: none;
+  background: radial-gradient(
+    ellipse at 50% 50%,
+    rgba(129, 151, 121, 0.09),
+    transparent 62%
+  );
+  opacity: 0.42;
+  transform: translate3d(-2%, 0, 0) scale(0.98);
+  animation: ambientGlow 24s ease-in-out infinite alternate;
+  will-change: transform, opacity;
+}
+
+/* Keep the original green section identity while adding soft ambient light. */
+.visit-section {
+  background-color: var(--green);
+}
+
+/* The leaf layer stays inside the hero and never blocks links or buttons. */
+.falling-leaves {
+  position: absolute;
+  z-index: 1;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  contain: layout paint;
+}
+
+.falling-leaf {
+  position: absolute;
+  top: -34px;
+  left: var(--leaf-left);
+  width: 11px;
+  height: 17px;
+  border-radius: 0 85% 0 85%;
+  background: linear-gradient(
+    145deg,
+    rgba(178, 190, 135, 0.82),
+    rgba(92, 119, 78, 0.52)
+  );
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.12);
+  opacity: 0;
+  transform: rotate(var(--leaf-rotation));
+  animation: leafFall var(--leaf-duration) linear var(--leaf-delay) infinite;
+  will-change: transform, opacity;
+}
+
+.falling-leaf::after {
+  content: "";
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  width: 1px;
+  height: 12px;
+  background: rgba(233, 225, 209, 0.32);
+  transform: rotate(-18deg);
+  transform-origin: top;
+}
+
+.falling-leaf-1 {
+  --leaf-left: 18%;
+  --leaf-rotation: 24deg;
+  --leaf-duration: 23s;
+  --leaf-delay: -7s;
+}
+
+.falling-leaf-2 {
+  --leaf-left: 43%;
+  --leaf-rotation: 78deg;
+  --leaf-duration: 28s;
+  --leaf-delay: -17s;
+  width: 8px;
+  height: 13px;
+}
+
+.falling-leaf-3 {
+  --leaf-left: 69%;
+  --leaf-rotation: 12deg;
+  --leaf-duration: 25s;
+  --leaf-delay: -12s;
+  width: 9px;
+  height: 14px;
+}
+
+.falling-leaf-4 {
+  --leaf-left: 86%;
+  --leaf-rotation: 104deg;
+  --leaf-duration: 30s;
+  --leaf-delay: -22s;
+  width: 8px;
+  height: 12px;
+  opacity: 0;
+}
+
+@keyframes leafFall {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, -5vh, 0) rotate(var(--leaf-rotation));
+  }
+  12% {
+    opacity: 0.48;
+  }
+  48% {
+    transform: translate3d(30px, 43vh, 0) rotate(calc(var(--leaf-rotation) + 150deg));
+  }
+  86% {
+    opacity: 0.32;
+  }
+  100% {
+    opacity: 0;
+    transform: translate3d(-18px, 96vh, 0) rotate(calc(var(--leaf-rotation) + 310deg));
+  }
+}
+
+@keyframes ambientGlow {
+  from {
+    opacity: 0.28;
+    transform: translate3d(-2%, -1%, 0) scale(0.98);
+  }
+  to {
+    opacity: 0.52;
+    transform: translate3d(2%, 1%, 0) scale(1.02);
+  }
+}
+
+/* Fewer moving elements and no animated texture on small screens. */
+@media (max-width: 600px) {
+  .falling-leaf-3,
+  .falling-leaf-4 {
+    display: none;
+  }
+
+  .falling-leaf {
+    width: 8px;
+    height: 12px;
+  }
+
+  .intro.section::before,
+  .menu-section::before,
+  .signature-section::before,
+  .space-section::before,
+  .events-section::before,
+  .reviews-section::before,
+  .visit-section::before {
+    animation-duration: 34s;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .falling-leaves,
+  .falling-leaf,
+  .intro.section::before,
+  .menu-section::before,
+  .signature-section::before,
+  .space-section::before,
+  .events-section::before,
+  .reviews-section::before,
+  .visit-section::before {
+    animation: none !important;
+    will-change: auto;
+  }
+
+  .falling-leaves {
+    display: none;
   }
 }
