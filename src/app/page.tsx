@@ -616,6 +616,14 @@ export default function Home() {
       <section className="hero" id="home">
         <div className="hero-overlay" />
 
+        {/* Lightweight decorative leaves — hidden from assistive technology */}
+        <div className="falling-leaves" aria-hidden="true">
+          <span className="falling-leaf falling-leaf-1" />
+          <span className="falling-leaf falling-leaf-2" />
+          <span className="falling-leaf falling-leaf-3" />
+          <span className="falling-leaf falling-leaf-4" />
+        </div>
+
         <div className="hero-content">
           <span className="hero-location">MAYANNUR · OTTAPALAM</span>
           <span className="eyebrow">A LITTLE ESCAPE IN MAYANNUR</span>
