@@ -1150,6 +1150,74 @@ export default function Home() {
             Casual café dining · Food & beverages ·
             Friends & family gatherings
           </p>
+
+          <div className="illustrated-map-card">
+            <div className="illustrated-map-heading">
+              <span>AROUND THE BRIDGE</span>
+              <small>A LITTLE LOCAL GUIDE</small>
+            </div>
+            <svg
+              className="illustrated-map-art"
+              viewBox="0 0 420 238"
+              role="img"
+              aria-label="Illustrated map showing a cafe beside a bridge, river and nearby greenery"
+            >
+              <defs>
+                <linearGradient id="mapRiver" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stopColor="#78988a" />
+                  <stop offset="1" stopColor="#315f56" />
+                </linearGradient>
+                <linearGradient id="mapRoad" x1="0" y1="0" x2="1" y2="1">
+                  <stop offset="0" stopColor="#e9e1d1" />
+                  <stop offset="1" stopColor="#cfc3aa" />
+                </linearGradient>
+              </defs>
+              <rect x="0" y="0" width="420" height="238" rx="12" fill="#e8e1d2" />
+              <path d="M-20 170 C65 125 95 205 180 158 S300 108 445 145 L445 260 L-20 260Z" fill="url(#mapRiver)" />
+              <path d="M-10 190 C65 145 105 225 188 178 S310 130 435 165" fill="none" stroke="#c1d5c6" strokeWidth="2" opacity=".58" />
+              <path d="M-10 211 C65 166 105 246 188 199 S310 151 435 186" fill="none" stroke="#c1d5c6" strokeWidth="1.5" opacity=".38" />
+              <path d="M-25 48 C65 68 115 18 198 52 S330 80 445 40" fill="none" stroke="#b9c3a5" strokeWidth="34" strokeLinecap="round" />
+              <path d="M-25 48 C65 68 115 18 198 52 S330 80 445 40" fill="none" stroke="url(#mapRoad)" strokeWidth="25" strokeLinecap="round" />
+              <path d="M177 43 Q210 6 245 48" fill="none" stroke="#8a7557" strokeWidth="13" strokeLinecap="round" />
+              <path d="M177 43 Q210 6 245 48" fill="none" stroke="#e4d6b8" strokeWidth="7" strokeLinecap="round" />
+              <path d="M177 44 L177 61 M245 48 L245 66" stroke="#8a7557" strokeWidth="4" />
+              <path d="M270 72 C300 86 310 104 330 123" fill="none" stroke="#b18b4d" strokeWidth="3" strokeDasharray="5 7" strokeLinecap="round" />
+              <g fill="#6d8762" stroke="#49644b" strokeWidth="2">
+                <circle cx="45" cy="105" r="17" /><circle cx="68" cy="119" r="12" />
+                <circle cx="350" cy="68" r="20" /><circle cx="378" cy="89" r="13" />
+                <circle cx="294" cy="194" r="16" /><circle cx="321" cy="205" r="11" />
+                <circle cx="112" cy="91" r="13" />
+              </g>
+              <g fill="#a8b98d" opacity=".9">
+                <circle cx="39" cy="99" r="5" /><circle cx="344" cy="61" r="6" />
+                <circle cx="288" cy="188" r="5" /><circle cx="107" cy="86" r="4" />
+              </g>
+              <g transform="translate(270 91)">
+                <path d="M0 17 L0 44" stroke="#8e6b37" strokeWidth="3" strokeLinecap="round" />
+                <path d="M-23 4 L0 -13 L23 4 V29 H-23Z" fill="#f4ead7" stroke="#315446" strokeWidth="2.5" />
+                <path d="M-27 5 L0 -17 L27 5" fill="#bd8d4c" stroke="#8e6b37" strokeWidth="2.5" strokeLinejoin="round" />
+                <rect x="-5" y="12" width="10" height="17" rx="1" fill="#315446" />
+                <rect x="-17" y="10" width="7" height="7" fill="#d5a85f" />
+                <rect x="10" y="10" width="7" height="7" fill="#d5a85f" />
+                <circle cx="0" cy="-23" r="7" fill="#d5a85f" stroke="#fff7e8" strokeWidth="2" />
+              </g>
+              <g fill="#315446" fontFamily="Arial, sans-serif" fontSize="10" fontWeight="700" letterSpacing="1.1">
+                <text x="286" y="151">THE CAFE</text>
+                <text x="24" y="29" fill="#6c765e" fontSize="8">MAYANNOOR BRIDGE</text>
+                <text x="24" y="226" fill="#e9e1d1" fontSize="8">RIVER SIDE</text>
+              </g>
+              <path d="M18 145 l7 -5 l7 5 l-7 5Z" fill="#d5a85f" opacity=".8" />
+              <path d="M388 132 l6 -4 l6 4 l-6 4Z" fill="#d5a85f" opacity=".8" />
+            </svg>
+            <a
+              className="illustrated-map-link"
+              href="https://www.google.com/maps/search/?api=1&query=The+Bridge+Resto+Cafe+Mayannur"
+              target="_blank"
+              rel="noreferrer"
+            >
+              OPEN REAL DIRECTIONS <ArrowUpRight size={13} aria-hidden="true" />
+            </a>
+          </div>
         </div>
       </section>
 
